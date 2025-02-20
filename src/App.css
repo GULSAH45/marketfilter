@@ -1,8 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-image: url("/marketpic.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.forms-container {
+  flex: 1;
+  max-width: 400px;
+}
+
+.table-container {
+  flex: 2;
+  min-width: 600px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  background-image: linear-gradient(to right, #8080800a 1px, transparent 1px),
+    linear-gradient(to bottom, #8080800a 1px, transparent 1px);
+  background-size: 14px 24px;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -10;
+  margin: auto;
+  height: 310px;
+  width: 310px;
+  border-radius: 50%;
+  background-color: rgb(232, 121, 249);
+  opacity: 0.2;
+  filter: blur(100px);
+}
+
+.table {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -39,4 +115,289 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Form stilleri */
+.form-control,
+.form-select {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  background: transparent;
+}
+
+.form-control::before,
+.form-select::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  background-image: linear-gradient(to right, #8080800a 1px, transparent 1px),
+    linear-gradient(to bottom, #8080800a 1px, transparent 1px);
+  background-size: 14px 24px;
+  border-radius: 8px;
+}
+
+.form-control::after,
+.form-select::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -2;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: rgb(232, 121, 249);
+  opacity: 0.2;
+  filter: blur(30px);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.25);
+}
+
+.form-label {
+  color: #ff69b4;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Form container stilleri */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* Buton stilleri */
+.btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-danger {
+  background-color: #4a934a !important;
+  border-color: #4a934a !important;
+}
+
+.btn-danger:hover {
+  background-color: #3b7a3b !important;
+  border-color: #3b7a3b !important;
+}
+
+.btn-outline-warning {
+  color: #805ad5 !important;
+  border-color: #805ad5 !important;
+}
+
+.btn-outline-warning:hover {
+  color: #ffffff !important;
+  background-color: #805ad5 !important;
+}
+
+.btn-outline-danger {
+  color: #ff69b4 !important;
+  border-color: #ff69b4 !important;
+  font-weight: bold !important;
+}
+
+.btn-outline-danger:hover {
+  color: #ffffff !important;
+  background-color: #ff69b4 !important;
+}
+
+/* Select stilleri */
+.form-select {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus {
+  border-color: #4a934a;
+  box-shadow: 0 0 0 0.2rem rgba(74, 147, 74, 0.25);
+}
+
+/* Radio button stilleri */
+.form-check-input:checked {
+  background-color: #4a934a !important;
+  border-color: #4a934a !important;
+}
+
+/* Tablo stilleri */
+.table th {
+  background-color: #4a934a;
+  color: white;
+  font-weight: 600;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(74, 147, 74, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(74, 147, 74, 0.1);
+}
+
+/* Responsive tasarım için */
+@media (max-width: 1024px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forms-container,
+  .table-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Custom Bought Button Styles */
+button.custom-bought {
+  all: unset;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  height: 3.5rem;
+  align-items: center;
+  border-radius: 9999px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: Segoe UI;
+  font-size: 1.2rem;
+  font-weight: 640;
+  color: #ff69b4;
+  letter-spacing: -0.06em;
+}
+
+.button-item {
+  background-color: transparent;
+  color: #ff69b4;
+  font-weight: bold;
+}
+
+.button-item .button-bg {
+  border-color: #ff69b4;
+  background-color: transparent;
+}
+
+.button-inner,
+.button-inner-hover,
+.button-inner-static {
+  pointer-events: none;
+  display: block;
+}
+
+.button-inner {
+  position: relative;
+}
+
+.button-inner-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(70%);
+}
+
+.button-bg {
+  overflow: hidden;
+  border-radius: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition: transform 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.button-bg,
+.button-bg-layer,
+.button-bg-layers {
+  display: block;
+}
+
+.button-bg-layers {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: -60%;
+  aspect-ratio: 1 / 1;
+  width: max(200%, 10rem);
+}
+
+.button-bg-layer {
+  border-radius: 9999px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+}
+
+.button-bg-layer.-purple {
+  background-color: #ff69b4;
+}
+
+.button-bg-layer.-turquoise {
+  background-color: #ff8dc6;
+}
+
+.button-bg-layer.-yellow {
+  --tw-bg-opacity: 1;
+  background-color: #ffb6d9;
+}
+
+.button:hover .button-inner-static {
+  opacity: 0;
+  transform: translateY(-70%);
+  transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s linear;
+}
+
+.button:hover .button-inner-hover {
+  opacity: 1;
+  transform: translateY(0);
+  color: white;
+  transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.button:hover .button-bg-layer {
+  transition: transform 1.3s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s linear;
+}
+
+.button:hover .button-bg-layer-1 {
+  transform: scale(1);
+}
+
+.button:hover .button-bg-layer-2 {
+  transition-delay: 0.1s;
+  transform: scale(1);
+}
+
+.button:hover .button-bg-layer-3 {
+  transition-delay: 0.2s;
+  transform: scale(1);
 }

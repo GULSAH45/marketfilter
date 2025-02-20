@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductParams } from "../types/types";
 import styled from "styled-components";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 interface TableComponentsProps {
   products: ProductParams[];
@@ -10,7 +10,7 @@ interface TableComponentsProps {
 }
 
 const StyledTable = styled.td<{ isBought?: boolean }>`
-  text-decoration: ${(props) => (props.isBought ? "line-through" : "")};
+  text-decoration: ${(props) => (props.isBought ? "line-through" : "none")};
 `;
 
 const TableComponents: React.FC<TableComponentsProps> = ({
@@ -23,10 +23,11 @@ const TableComponents: React.FC<TableComponentsProps> = ({
       <thead>
         <tr>
           <th>ID</th>
-          <th>Ürün</th>
-          <th>Shop</th>
-          <th>Kategori</th>
-          <th>Durum</th>
+          <th>PRODUCT</th>
+          <th>SHOP</th>
+          <th>CATEGORY</th>
+          <th>STATUS</th>
+          <th>ACTION</th>
         </tr>
       </thead>
       <tbody>
@@ -43,7 +44,31 @@ const TableComponents: React.FC<TableComponentsProps> = ({
               {product.category}
             </StyledTable>
             <StyledTable isBought={product.isBought}>
-              {product.isBought ? "Bought" : "Not Bought"}
+              <button className="button button-item" onClick={() => toggleBought(product.id)}>
+                <span className="button-inner">
+                  <span className="button-inner-static">
+                    {product.isBought ? "Undo" : "Bought"}
+                  </span>
+                  <span className="button-inner-hover">
+                    {product.isBought ? "Undo" : "Bought"}
+                  </span>
+                </span>
+                <span className="button-bg">
+                  <span className="button-bg-layers">
+                    <span className="button-bg-layer button-bg-layer-1 -yellow"></span>
+                    <span className="button-bg-layer button-bg-layer-2 -turquoise"></span>
+                    <span className="button-bg-layer button-bg-layer-3 -purple"></span>
+                  </span>
+                </span>
+              </button>
+            </StyledTable>
+            <StyledTable>
+              <Button
+                className="btn btn-outline-danger"
+                onClick={() => deleteProduct(product.id)}
+              >
+                Delete
+              </Button>
             </StyledTable>
           </tr>
         ))}
